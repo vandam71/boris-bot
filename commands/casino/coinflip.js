@@ -43,25 +43,24 @@ module.exports = {
                     // Picked heads and won
                     await new Transaction(interaction.user.id, value, 'Coinflip').process();
                     flipMessage.setDescription('You flip a coin, and it lands on Heads. You won ' + value + " <:boriscoin:798017751842291732>.");
-                    return interaction.editReply({embeds: [flipMessage]});
                 } else {
                     // Picked heads and lost
                     await new Transaction(interaction.user.id, -value, 'Coinflip').process();
                     flipMessage.setDescription('You flip a coin, and it lands on Tails. You lost ' + value + " <:boriscoin:798017751842291732>.");
-                    return interaction.editReply({embeds: [flipMessage]});
                 }
+                break;
             case 'tails':
                 if (coin === "tails"){
                     // Picked tails and won
                     await new Transaction(interaction.user.id, value, 'Coinflip').process();
                     flipMessage.setDescription('You flip a coin, and it lands on Tails. You won ' + value + " <:boriscoin:798017751842291732>.");
-                    return interaction.editReply({embeds: [flipMessage]});
                 } else {
                     // Picked tails and lost
                     await new Transaction(interaction.user.id, -value, 'Coinflip').process();
                     flipMessage.setDescription('You flip a coin, and it lands on Heads. You lost ' + value + " <:boriscoin:798017751842291732>.");
-                    return interaction.editReply({embeds: [flipMessage]});
                 }
+                break;
         }
+        return interaction.editReply({embeds: [flipMessage.setFields({name: "Bet value: " + value, value: '\t'})]});
     }
 }

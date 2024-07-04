@@ -24,8 +24,10 @@ module.exports = {
             return interaction.editReply({embeds: [new EmbedBuilder()
                 .setTitle("Slot Machine")
                 .setColor(0xAF873D)
-                .setDescription("**Win** - **Combination**\n 30x - 3 Jokers 🎰 🎰 🎰\n10x - Any 3 Fruit 🍎 🍇 🍋 🍌 🍒 \n4x - Any 2 Jokers 🎰 🎰\n1x - Any 1 Joker 🎰")
-                ]})
+                .addFields({
+                    name: "**Win** - **Combination**",
+                    value: "30x - 3 Jokers 🎰 🎰 🎰\n10x - Any 3 Fruit 🍎 🍇 🍋 🍌 🍒 \n4x - Any 2 Jokers 🎰 🎰\n1x - Any 1 Joker 🎰"
+                })]})
         }
 
         const value = interaction.options.getInteger('value');
@@ -46,7 +48,8 @@ module.exports = {
         let slotsEmbed = new EmbedBuilder()
             .setTitle("Slot Machine")
             .setColor(0xAF873D)
-            .setDescription(`• ${$}  ${$$}  ${$$$} •`);
+            .setDescription(`\`\`\`\u1CBC\u1CBC${$}\u1CBC\u1CBC${$$}\u1CBC\u1CBC${$$$}\u1CBC\u1CBC\`\`\``)
+            .setFields({name: "Bet value: " + value, value: '\t'});
 
         if ($ === $$ && $ === $$$) {
             if ($ === '🎰') {
@@ -81,6 +84,6 @@ module.exports = {
             })
         }
 
-        interaction.editReply({embeds: [slotsEmbed]});
+        return interaction.editReply({embeds: [slotsEmbed]});
     }
 }
