@@ -36,6 +36,8 @@ module.exports = {
                 // await Item.create({name: "Ruby", description: "Tier 3 Gem", id: 203, price: 400, emote: ':gem_3:926220295164014623', category: "crafting"});
                 // await Item.create({name: "Emerald", description: "Tier 4 Gem", id: 204, price: 800, emote: ':gem_4:926220295440838756', category: "crafting"});
                 // await Item.create({name: "Amethyst", description: "Tier 5 Gem", id: 205, price: 1600, emote: ':gem_5:926220295893835786', category: "crafting"});
+                // await Item.create({name: "Bronze Key", description: "Opens a Bronze chest", id: 801, price: 0, emote: ':bronze_key:842116583471710288', category: "untradeable"});
+                // await Item.create({name: "Gold Key", description: "Opens the Gold Chest", id: 802, price: 0, emote: ':gold_key:842116583471841280', category: "untradeable"});
                 
         }
     }

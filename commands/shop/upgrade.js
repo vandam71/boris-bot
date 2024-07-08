@@ -11,6 +11,22 @@ module.exports = {
             option.setName('item_name')
             .setDescription('The name of the item you want to upgrade')
             .setRequired(true)),
+    details: {
+        description: `
+            Upgrades a specified perk item using an upgrade material. Each upgrade level requires a different material and has a decreasing success rate.
+            **Upgrade materials**:
+- <:gem_1:926220295210164245> Sapphire - Tier 1
+- <:gem_2:926220295516352512> Aquamarine - Tier 2
+- <:gem_3:926220295164014623> Ruby - Tier 3
+- <:gem_4:926220295440838756> Emerald - Tier 4
+- <:gem_5:926220295893835786> Amethyst - Tier 5
+        `,
+        usage: "/upgrade item_name:<item_name>",
+        examples: [
+            "/upgrade item_name:Luck Perk",
+            "/upgrade item_name:Speed Perk"
+        ]
+    },
     async execute(interaction, client) {
         await interaction.deferReply();
 

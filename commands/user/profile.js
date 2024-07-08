@@ -6,6 +6,11 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('profile')
 		.setDescription("Retrieves the user's profile"),
+    details: {
+        description: "Retrieves and displays the user's profile including level, experience, coins, and inventory.",
+        usage: "/profile",
+        examples: ["/profile"]
+    },
 	async execute(interaction, client) {
         await interaction.deferReply();
         let user = await User.findOne({id: interaction.user.id});

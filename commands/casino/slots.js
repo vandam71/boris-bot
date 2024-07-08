@@ -11,24 +11,24 @@ module.exports = {
         .addIntegerOption(option =>
             option.setName('value')
             .setDescription('The value you want to bet')
-            .setRequired(false))
-        .addBooleanOption(option =>
-            option.setName('help')
-            .setDescription('Get detailed information about the slots game')
-            .setRequired(false)
-        ),
+            .setRequired(false)),
+        
+    details: {
+        description: `
+Play the slots game and try your luck! Here are the win conditions:
+- **30x** - **3 Jokers** 🎰 🎰 🎰
+- **10x** - **Any 3 Fruit** 🍎 🍇 🍋 🍌 🍒 
+- **4x** - **Any 2 Jokers** 🎰 🎰
+- **1x** - **Any 1 Joker** 🎰
+        `,
+        usage: "/slots value:<bet_amount>",
+        examples: [
+            "/slots value:50",
+            "/slots value:100"
+        ]
+    },
     async execute(interaction, client) {
         await interaction.deferReply();
-
-        if (interaction.options.getBoolean('help')){
-            return interaction.editReply({embeds: [new EmbedBuilder()
-                .setTitle("Slot Machine")
-                .setColor(0xAF873D)
-                .addFields({
-                    name: "**Win** - **Combination**",
-                    value: "30x - 3 Jokers 🎰 🎰 🎰\n10x - Any 3 Fruit 🍎 🍇 🍋 🍌 🍒 \n4x - Any 2 Jokers 🎰 🎰\n1x - Any 1 Joker 🎰"
-                })]})
-        }
 
         const value = interaction.options.getInteger('value');
 

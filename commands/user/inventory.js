@@ -7,6 +7,11 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('inventory')
 		.setDescription("Retrieves the user's inventory"),
+    details: {
+        description: 'Displays the items in your inventory.',
+        usage: "/inventory",
+        examples: ["/inventory"]
+    },
 	async execute(interaction, client) {
         
         await interaction.deferReply();

@@ -3,6 +3,11 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	category: "utility",
 	cooldown: 5,
+	details: {
+        description: "Replies with Pong! and displays the roundtrip latency.",
+        usage: "/ping",
+        examples: ["/ping"]
+    },
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong!'),

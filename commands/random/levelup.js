@@ -7,6 +7,11 @@ module.exports = {
 	data: new SlashCommandBuilder()
         .setName('levelup')
 		.setDescription("Check how much XP you need to level up"),
+    details: {
+        description: "Allows users to check how much XP they need to reach the next level.",
+        usage: "/levelup",
+        examples: ["/levelup - Checks how much XP is needed to reach the next level."]
+    },
     async execute(interaction, client) {
         const user = await User.findOne({id: interaction.user.id});
         let req_xp = 69 * (user.level + 1) * (1 + (user.level + 1));

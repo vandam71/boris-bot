@@ -10,6 +10,14 @@ module.exports = {
             option.setName('category')
             .setDescription('The category of the shop you want to access')
             .setRequired(false)),
+    details: {
+        description: "Displays the full shop or a specific category of items available for purchase.",
+        usage: "/shop category:<category>",
+        examples: [
+            "/shop",
+            "/shop category:perks"
+        ]
+    },
     async execute(interaction, client) {
         await interaction.deferReply();
 

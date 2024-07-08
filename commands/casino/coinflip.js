@@ -22,6 +22,18 @@ module.exports = {
             .setDescription('The value you want to bet')
             .setRequired(true)
         ),
+    details: {
+        description: `
+Flip a coin and try your luck with a 50% chance of winning! Choose heads or tails and bet an amount of coins.
+- If the coin lands on your chosen side, you win the amount you bet.
+- If the coin lands on the opposite side, you lose the amount you bet.
+`,
+        usage: "/coinflip side:<heads/tails> value:<bet_amount>",
+        examples: [
+            "/coinflip side:heads value:50",
+            "/coinflip side:tails value:100"
+        ]
+    },
     async execute(interaction, client) {
         await interaction.deferReply();
 
@@ -61,6 +73,6 @@ module.exports = {
                 }
                 break;
         }
-        return interaction.editReply({embeds: [flipMessage.setFields({name: "Bet value: " + value, value: '\t'})]});
+        return interaction.editReply({embeds: [flipMessage.addFields({name: "Bet value: " + value, value: '\t'})]});
     }
 }

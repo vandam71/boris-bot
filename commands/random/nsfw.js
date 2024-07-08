@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const axios = require('axios');
-const logger = require('../../logger');
 
 module.exports = {
     category: "random",
@@ -19,6 +18,14 @@ module.exports = {
                     { name: 'food', value: 'food' },
                 )
             ),
+    details: {
+        description: "Allows users to retrieve NSFW images based on specified categories.",
+        usage: "/nsfw category:<category>",
+        examples: [
+            "/nsfw category:boobs - Retrieves a NSFW image from the 'boobs' category.",
+            "/nsfw category:food - Retrieves a NSFW image from the 'food' category.",
+        ]
+    },
 	async execute(interaction, client) {
         if (!interaction.channel.nsfw) {
             interaction.reply('This command can only be executed in a NSFW channel!');

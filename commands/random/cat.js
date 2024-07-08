@@ -7,6 +7,11 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('cat')
 		.setDescription('Sends a random cat picture!'),
+	details: {
+		description: "Sends a random cat picture.",
+		usage: "/cat",
+		examples: ["/cat - Sends a random picture of a cat."]
+	},
 	async execute(interaction, client) {
 		await interaction.deferReply();
 

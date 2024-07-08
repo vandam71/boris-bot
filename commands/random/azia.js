@@ -7,7 +7,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('azia')
 		.setDescription("Azia alguém")
-        .addUserOption(option => option.setName('target').setDescription('The user')),
+        .addUserOption(option => option.setName('target').setDescription('The user').setRequired(true)),
+    details: {
+        description: "Increments the 'azia' count for a specified user.",
+        usage: "/azia target:<@user>",
+        examples: ["/azia target:@ElBoris - Increments the 'azia' count for the mentioned user."]
+    },
 	async execute(interaction, client) {
         await interaction.deferReply();
 		const userID = interaction.options.getUser('target');

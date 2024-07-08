@@ -12,6 +12,11 @@ module.exports = {
             option.setName('item_name')
             .setDescription('The name of the item you want to puchase')
             .setRequired(true)),
+    details: {
+        description: "Allows the user to purchase an item from the shop.",
+        usage: "/buy item_name:<item_to_purchase>",
+        examples: ["/buy item_name:Sapphire - Buys a Sapphire from the shop"]
+    },
     async execute(interaction, client) {
         await interaction.deferReply();
 

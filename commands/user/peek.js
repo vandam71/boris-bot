@@ -6,7 +6,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('peek')
 		.setDescription("Retrieves the selected user's profile")
-        .addUserOption(option => option.setName('target').setDescription('The user')),
+        .addUserOption(option => option.setName('target').setDescription('The user').setRequired(true)),
+    details: {
+        description: "Retrieves and displays the profile of the selected user including level, experience, and Azia.",
+        usage: "/peek target:<@user>",
+        examples: ["/peek target:@ElBoris"]
+    },
 	async execute(interaction, client) {
         await interaction.deferReply();
 		const userID = interaction.options.getUser('target');
