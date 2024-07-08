@@ -11,7 +11,7 @@ module.exports = {
 
 		if (!command) {
 			logger.error(`No command matching ${interaction.commandName} was found.`);
-			return;
+			return interaction.reply({ content: 'There is no command with this name!', ephemeral: true });
 		}
 
 		const { cooldowns } = interaction.client;
