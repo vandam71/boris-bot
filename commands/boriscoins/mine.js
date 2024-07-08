@@ -7,19 +7,19 @@ module.exports = {
 	category: "boriscoins",
 	data: new SlashCommandBuilder()
 		.setName('mine')
-		.setDescription("Mine for some coins (and a chance on keys)"),
+		.setDescription("Mine for some <:boriscoin:798017751842291732> (and a chance on keys)"),
 	details: {
 		description: `
-Initiates a mining process to earn coins, with a chance to find keys.
+Initiates a mining process to earn <:boriscoin:798017751842291732>, with a chance to find keys.
 - <:bronze_key:842116583471710288> Bronze Key: 1/100
 - <:gold_key:842116583471841280> Gold Key: 1/1000
 \n**Perks available**
 - <:perk_speed:842116583676444672> Speed Perk - Decreases the mining duration for 5 seconds each perk tier
-- <:perk_luck:842141817990152212> Luck Perk - plus one coin each mining iteration
+- <:perk_luck:842141817990152212> Luck Perk - Plus one <:boriscoin:798017751842291732> each mining iteration
 `,
 		usage: "/mine",
 		examples: [
-			"/mine - Initiates the mining process to earn coins."
+			"/mine - Initiates the mining process to earn <:boriscoin:798017751842291732>."
 		]
 	},
 	async execute(interaction, client) {
@@ -49,10 +49,12 @@ Initiates a mining process to earn coins, with a chance to find keys.
 		if (speedValue !== 0) {
 			perksString.push("<:perk_speed:842116583676444672> Speed Perk level " + speedValue);
 		}
-		if (luckPerk !== 0) {
+		if (luckValue !== 0) {
 			perksString.push("<:perk_luck:842141817990152212> Luck Perk level " + luckValue);
 		}
-		embed.addFields({ name: "Perks Used:", value: perksString.join("\n") });
+		if (perksString.length > 0) {
+			embed.addFields({ name: "Perks Used:", value: perksString.join("\n") });
+		}
 
 		interaction.editReply({ embeds: [embed] });
 
