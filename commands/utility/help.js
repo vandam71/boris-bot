@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     category: "utulity",
     data: new SlashCommandBuilder()
-        .setName('info')
+        .setName('help')
         .setDescription("Get info about a command or list commands by category")
         .addStringOption(option =>
             option.setName('command')

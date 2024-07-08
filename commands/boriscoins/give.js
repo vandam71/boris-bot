@@ -14,7 +14,7 @@ module.exports = {
 		description: `Gives another user the amount of coins you choose.`,
 		usage: "/give target:<@user> value:<coin_amount>",
 		examples: [
-			"/give target:@ElBoris value:50 - Gives 50 coins the the ElBoris user."
+			"/give target:@ElBoris value:50 - Gives 50 coins to the ElBoris user."
 		]
 	},
 	async execute(interaction, client) {
