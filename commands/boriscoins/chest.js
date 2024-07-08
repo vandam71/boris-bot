@@ -21,8 +21,8 @@ module.exports = {
 	details: {
 		description: `
 You open a chest using a key from the inventory.
-- <:bronze_key:842116583471710288> Bronze Key: 300 to 400 <:boriscoin:798017751842291732> and 200 to 300 <:xp:801554148994056202>
-- <:gold_key:842116583471841280> Gold Key: 2000-3000 <:boriscoin:798017751842291732> and 500 to 1000 <:xp:801554148994056202>
+- <:bronze_key:842116583471710288> Bronze Key: 300<:boriscoin:798017751842291732> to 400<:boriscoin:798017751842291732> and 200<:xp:801554148994056202> to 300<:xp:801554148994056202>
+- <:gold_key:842116583471841280> Gold Key: 2000<:boriscoin:798017751842291732> to 3000<:boriscoin:798017751842291732> and 500<:xp:801554148994056202> to 1000<:xp:801554148994056202>
 `,
 		usage: "/chest key:<Bronze Key/Gold Key>",
 		examples: [

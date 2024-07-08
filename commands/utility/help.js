@@ -1,26 +1,25 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    category: "utulity",
+    category: "utility",
     data: new SlashCommandBuilder()
         .setName('help')
         .setDescription("Get info about a command or list commands by category")
         .addStringOption(option =>
             option.setName('command')
-                .setDescription('Command name or "commands" for a list by category')
-                .setRequired(true)),
+                .setDescription('Command name')),
     details: {
         description: "Get information about a specific command or list all commands categorized.",
-        usage: "/info command:<command_name|'commands'>",
+        usage: "/help command:<command_name>",
         examples: [
-            "/info command:ping - Provides information about the 'ping' command.",
-            "/info command:commands - Lists all available commands categorized."
+            "/help command:ping - Provides information about the 'ping' command.",
+            "/help - Lists all available commands categorized."
         ]
     },
     async execute(interaction, client) {
         const commandName = interaction.options.getString('command');
 
-        if (commandName.toLowerCase() === 'commands') {
+        if (!commandName) {
             // Group commands by category
             const categories = {};
             client.commands.forEach(cmd => {

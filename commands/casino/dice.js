@@ -40,30 +40,32 @@ module.exports = {
         client.activeDice.add(interaction.user.id);
         client.activeDice.add(userOption.id);
 
-        const row = new ActionRowBuilder().addComponents(
-            new ButtonBuilder()
-                .setCustomId('confirm')
-                .setLabel('Confirm')
-                .setStyle(ButtonStyle.Success),
-            new ButtonBuilder()
-                .setCustomId('cancel')
-                .setLabel('Cancel')
-                .setStyle(ButtonStyle.Danger)
-        );
+        const confirm = new ButtonBuilder()
+            .setCustomId('confirm')
+            .setLabel('Confirm')
+            .setStyle(ButtonStyle.Success);
+
+        const cancel = new ButtonBuilder()
+            .setCustomId('cancel')
+            .setLabel('Cancel')
+            .setStyle(ButtonStyle.Danger);
+
+        const row = new ActionRowBuilder()
+            .addComponents(confirm, cancel);
         
-    
         const collectorFilter = i => i.user.id === userOption.id;
-
-        diceMessage.setDescription(`You have challenged **${userOption.displayName}**. Total value in the bet: **${betAmount}** <:boriscoin:798017751842291732>`);
-
-        const response = await interaction.editReply({embeds: [diceMessage], components: [row]});
 
         const ownRoll = Math.floor(Math.random() * 100) + 1;
         const otherRoll = Math.floor(Math.random() * 100) + 1;
 
+        const response = await interaction.editReply({
+            embeds: [diceMessage.setDescription(`You have challenged **${userOption.displayName}**. Total value in the bet: **${betAmount}** <:boriscoin:798017751842291732>`)], 
+            components: [row]
+        });
+
         try {
-            const confirmation = await response.awaitMessageComponent({filter: collectorFilter, time: 60_000});
-            if (confirmation.customID === 'confirm'){
+            const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60_000});
+            if (confirmation.customId === 'confirm'){
                 const win = ownRoll >= otherRoll;
                 const winner = win ? interaction.user : userOption;
                 const loser = win ? userOption : interaction.user;
@@ -80,7 +82,7 @@ module.exports = {
 
                 return interaction.editReply({ embeds: [diceMessage.setDescription(resultMessage)], components: [] });
 
-            } else if (confirmation.customID === 'cancel'){
+            } else if (confirmation.customId === 'cancel'){
                 client.activeDice.delete(interaction.user.id);
                 client.activeDice.delete(userOption.id);
                 return interaction.editReply({embeds: [upgradeMessage.setDescription("The challenge has been declined.")], components: []});
