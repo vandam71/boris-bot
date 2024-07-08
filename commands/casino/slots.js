@@ -11,7 +11,7 @@ module.exports = {
         .addIntegerOption(option =>
             option.setName('value')
             .setDescription('The value you want to bet')
-            .setRequired(false)),
+            .setRequired(true)),
         
     details: {
         description: `
