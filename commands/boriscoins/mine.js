@@ -7,7 +7,7 @@ module.exports = {
 	category: "boriscoins",
 	data: new SlashCommandBuilder()
 		.setName('mine')
-		.setDescription("Mine for some <:boriscoin:798017751842291732> (and a chance on keys)"),
+		.setDescription("Mine for some coins (and a chance on keys)"),
 	details: {
 		description: `
 Initiates a mining process to earn <:boriscoin:798017751842291732>, with a chance to find keys.

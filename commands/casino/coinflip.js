@@ -73,6 +73,6 @@ Flip a coin and try your luck with a 50% chance of winning! Choose heads or tail
                 }
                 break;
         }
-        return interaction.editReply({embeds: [flipMessage.addFields({name: "Bet value: " + value, value: '\t'})]});
+        return interaction.editReply({embeds: [flipMessage.addFields({name: "Bet value: " + value + "<:boriscoin:798017751842291732>", value: '\t'})]});
     }
 }

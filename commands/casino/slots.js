@@ -2,6 +2,10 @@ const Transaction = require('../../struct/Transaction');
 const {User} = require('../../models/user');
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 module.exports = {
 	category: "casino",
     cooldown: 15,
@@ -41,15 +45,15 @@ Play the slots game and try your luck! Here are the win conditions:
 
         let items = ['🎰', '🍎', '🍇', '🍋', '🍌', '🍒'];
 
-        let $ = items[Math.floor(items.length * Math.random())];
-        let $$ = items[Math.floor(items.length * Math.random())];
-        let $$$ = items[Math.floor(items.length * Math.random())];
+        let $ = getRandomElement(items);
+        let $$ = getRandomElement(items);
+        let $$$ = getRandomElement(items);
 
         let slotsEmbed = new EmbedBuilder()
             .setTitle("Slot Machine")
             .setColor(0xAF873D)
             .setDescription(`\`\`\`\u1CBC\u1CBC${$}\u1CBC\u1CBC${$$}\u1CBC\u1CBC${$$$}\u1CBC\u1CBC\`\`\``)
-            .setFields({name: "Bet value: " + value, value: '\t'});
+            .setFields({name: "Bet value: " + value + " <:boriscoin:798017751842291732>", value: '\t'});
 
         if ($ === $$ && $ === $$$) {
             if ($ === '🎰') {
